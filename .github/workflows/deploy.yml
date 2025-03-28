@@ -18,6 +18,11 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
+      - name: Set UTF-8 encoding
+        run: |
+          export LC_ALL=en_US.UTF-8
+          export LANG=en_US.UTF-8
+
       - name: Install Deno
         uses: denoland/setup-deno@v2
         with:
@@ -28,11 +33,14 @@ jobs:
         with:
           node-version: lts/*
 
+      - name: Remove cached Next.js build files
+        run: rm -rf .next
+
       - name: Install step
         run: "npm install"
 
-      - name: Build step
-        run: "npm run build"
+      - name: Build Next.js app
+        run: NEXT_DISABLE_CACHE=1 npm run build
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
