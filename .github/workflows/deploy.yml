@@ -46,7 +46,7 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "imanjofaris-my-portfoli-65"
-          entrypoint: ".next/standalone/server.js"
+          entrypoint: "jsr:@deno/nextjs-start"
           root: "."
           
           
