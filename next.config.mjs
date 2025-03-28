@@ -3,8 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
-      test: /\.woff2$/,
-      use: "null-loader", // Prevents loading font files
+      test: /\.(woff|woff2|eot|ttf|otf)$/,
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/media/[name].[hash].[ext]'
+      }
     });
     return config;
   },
