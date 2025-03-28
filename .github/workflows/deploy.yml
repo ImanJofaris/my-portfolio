@@ -40,5 +40,5 @@ jobs:
           project: "imanjofaris-my-portfoli-65"
           entrypoint: "jsr:@deno/nextjs-start"
           root: "."
-          include: .next, public
+          
           
